@@ -18,19 +18,14 @@ const sections: Record<Section, FC<{ onNavigate?: (section: Section) => void }>>
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<Section>('home');
+
   const ActiveComponent = sections[activeSection];
 
-  const handleNavigate = (section: Section) => {
-    setActiveSection(section);
-  };
-
   return (
-    <div className="flex flex-col min-h-screen bg-background font-body pb-20">
+    <div className="flex flex-col min-h-screen bg-background font-body">
       <Header />
-      <main className="flex-grow">
-        <div key={activeSection} className="animate-in fade-in-50 duration-500">
-           <ActiveComponent onNavigate={handleNavigate} />
-        </div>
+      <main className="flex-1 pb-20">
+        <ActiveComponent onNavigate={setActiveSection} />
       </main>
       <BottomNav activeSection={activeSection} setActiveSection={setActiveSection} />
     </div>

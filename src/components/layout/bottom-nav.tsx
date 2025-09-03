@@ -36,7 +36,7 @@ export default function BottomNav({ activeSection, setActiveSection }: BottomNav
                 strokeWidth={isActive ? 2.5 : 2}
               />
                {isActive && (
-                <div className="absolute bottom-1 h-1 w-8 bg-primary rounded-full" />
+                <div className="absolute bottom-1 h-1 w-8 bg-gradient-to-r from-primary to-accent rounded-full" />
               )}
             </button>
           );

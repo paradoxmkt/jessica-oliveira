@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      transitionProperty: {
+        'height': 'height',
+      },
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         headline: ['Inter', 'sans-serif'],

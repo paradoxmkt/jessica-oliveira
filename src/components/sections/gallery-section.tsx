@@ -27,7 +27,7 @@ export default function GallerySection() {
 
   return (
     <>
-      <section className="container mx-auto px-2 pt-8 text-center">
+      <section className="container mx-auto px-2 pt-4 md:pt-8 text-center">
         <div className="flex justify-center mb-4">
           <Camera className="h-16 w-16 text-primary" />
         </div>
@@ -54,12 +54,14 @@ export default function GallerySection() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Button
-            size="lg"
-            className="bg-gradient-to-r from-accent to-primary text-primary-foreground font-bold text-base shadow-lg transition-transform hover:scale-105"
-          >
-            Quero Ver Tudo!
-          </Button>
+          <a href="https://www.ggcheckout.com/checkout/v2/Voc8n1jpAOKIzkxj9RLb" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              className="btn-gradient text-base shadow-lg transition-transform hover:scale-105"
+            >
+              Quero Ver Tudo!
+            </Button>
+          </a>
         </div>
       </section>
 

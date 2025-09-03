@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { MessageSquare, Instagram, Gem, Camera, Heart, Lock, Sparkles, ShieldCheck } from 'lucide-react';
+import { ShoppingCart, Gem, Camera, Heart, Lock, Sparkles, ShieldCheck } from 'lucide-react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -13,27 +13,16 @@ import Autoplay from "embla-carousel-autoplay"
 import type { Section } from '@/app/page';
 
 
-const EighteenPlusIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-        <circle cx="12" cy="12" r="10" />
-        <path d="M14.5 14.5a2.5 2.5 0 0 0-5 0V12a2.5 2.5 0 0 0 5 0V9.5a2.5 2.5 0 0 0-5 0" />
-        <path d="M7 12h2" />
-        <path d="M15 12h2" />
-    </svg>
-);
-
-
 const socialLinks = [
-  { id: 'packs', icon: EighteenPlusIcon, label: 'Packs', type: 'nav' as const, section: 'extra' as Section },
-  { id: 'whatsapp', icon: MessageSquare, label: 'WhatsApp', type: 'link' as const, href: '#' },
-  { id: 'instagram', icon: Instagram, label: 'Instagram', type: 'link' as const, href: '#' },
+  { id: 'gallery', icon: Camera, label: 'Fotos', type: 'nav' as const, section: 'gallery' as Section },
+  { id: 'store', icon: ShoppingCart, label: 'Lojinha', type: 'nav' as const, section: 'extra' as Section },
 ];
 
 const testimonials = [
-  { name: 'Alex T.', avatar: '/avatars/01.png', comment: 'O melhor conteúdo que já vi! Vale cada centavo.' },
-  { name: 'Julia M.', avatar: '/avatars/02.png', comment: 'Qualidade incrível e sempre com novidades. Recomendo!' },
-  { name: 'Carlos S.', avatar: '/avatars/03.png', comment: 'Transformou minha percepção sobre conteúdo exclusivo.' },
-  { name: 'Ana B.', avatar: '/avatars/04.png', comment: 'Simplesmente fantástica. Assinatura renovada com certeza.' },
+  { name: 'Alex T.', avatar: 'https://picsum.photos/seed/newalex/200', comment: 'O melhor conteúdo que já vi! Vale cada centavo.', hint: 'man face' },
+  { name: 'Julia M.', avatar: 'https://i.imgur.com/USg9hCQ.jpeg', comment: 'Qualidade incrível e sempre com novidades. Recomendo!', hint: 'woman face' },
+  { name: 'Carlos S.', avatar: 'https://picsum.photos/seed/newcarlos/200', comment: 'Transformou minha percepção sobre conteúdo exclusivo.', hint: 'man face' },
+  { name: 'Ana B.', avatar: 'https://i.imgur.com/Jt5rTVB.jpeg', comment: 'Simplesmente fantástica. Assinatura renovada com certeza.', hint: 'woman face' },
 ];
 
 const benefits = [
@@ -89,7 +78,7 @@ export default function HomeSection({ onNavigate }: HomeSectionProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
         <div className="relative z-10 flex flex-col items-center p-4">
           <Avatar className="w-28 h-28 mb-4 border-4 border-white/80 shadow-lg">
-            <AvatarImage src="https://i.imgur.com/NDhMWnI.jpeg" data-ai-hint="woman face" alt="Jéssica Oliveira" />
+            <AvatarImage src="https://i.imgur.com/3i1QmiJ.jpeg" data-ai-hint="woman face" alt="Jéssica Oliveira" />
             <AvatarFallback>JO</AvatarFallback>
           </Avatar>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight font-headline" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
@@ -98,12 +87,14 @@ export default function HomeSection({ onNavigate }: HomeSectionProps) {
           <p className="mt-2 max-w-md text-lg font-light">
             Modelo digital e criadora de conteúdos exclusivos.
           </p>
-          <Button
-            size="lg"
-            className="mt-6 bg-gradient-to-r from-accent to-primary text-primary-foreground font-bold text-base shadow-lg transition-transform hover:scale-105"
-          >
-            Acessar Conteúdo VIP
-          </Button>
+          <a href="https://www.ggcheckout.com/checkout/v2/Voc8n1jpAOKIzkxj9RLb" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              className="mt-6 btn-gradient text-base shadow-lg transition-transform hover:scale-105"
+            >
+              Acessar Conteúdo VIP
+            </Button>
+          </a>
            <p className="mt-4 max-w-lg text-sm font-light text-white/90" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.6)' }}>
             Descubra um pouco mais de mim e do que só mostro para quem sabe apreciar de verdade...
           </p>
@@ -113,32 +104,17 @@ export default function HomeSection({ onNavigate }: HomeSectionProps) {
       {/* Links Section */}
       <section className="py-8 bg-background">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-            {socialLinks.map((link) => {
-              if (link.type === 'nav') {
-                return (
+          <div className="grid grid-cols-2 gap-3">
+            {socialLinks.map((link) => (
                   <Button
                     key={link.id}
                     onClick={() => onNavigate?.(link.section)}
-                    className="w-full md:w-auto text-lg font-semibold py-8 px-10 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl bg-gradient-to-r from-primary/80 to-accent/80 text-primary-foreground hover:from-primary/70 hover:to-accent/70 flex flex-col items-center justify-center gap-2"
+                    className="w-full text-lg font-semibold py-8 px-4 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl btn-gradient flex flex-col items-center justify-center h-28"
                   >
                     <link.icon className="h-8 w-8" />
                     <span>{link.label}</span>
                   </Button>
-                )
-              }
-              return (
-              <Button
-                key={link.id}
-                asChild
-                className="w-full md:w-auto text-lg font-semibold py-8 px-10 shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 rounded-2xl bg-gradient-to-r from-primary/80 to-accent/80 text-primary-foreground hover:from-primary/70 hover:to-accent/70"
-              >
-                <a href={link.href} className="flex flex-col items-center justify-center gap-2">
-                  <link.icon className="h-8 w-8" />
-                  <span>{link.label}</span>
-                </a>
-              </Button>
-            )})}
+            ))}
           </div>
         </div>
       </section>
@@ -152,16 +128,18 @@ export default function HomeSection({ onNavigate }: HomeSectionProps) {
                 src="https://i.imgur.com/NIL2RbP.png"
                 alt="Teaser image"
                 fill
-                className="object-cover filter blur-sm"
+                className="object-cover filter blur-[2px]"
                 data-ai-hint="sensual photo"
               />
           </div>
-           <Button
-            size="lg"
-            className="mt-8 bg-gradient-to-r from-accent to-primary text-primary-foreground font-bold text-base shadow-lg transition-transform hover:scale-105"
-          >
-            Quero entrar agora no VIP🔥
-          </Button>
+          <a href="https://www.ggcheckout.com/checkout/v2/Voc8n1jpAOKIzkxj9RLb" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              className="mt-8 btn-gradient text-base shadow-lg transition-transform hover:scale-105"
+            >
+              Quero entrar agora no VIP🔥
+            </Button>
+          </a>
         </div>
       </section>
       
@@ -186,12 +164,14 @@ export default function HomeSection({ onNavigate }: HomeSectionProps) {
              ✨ Quer me ver de verdade, sem censura? Quer me ver peladinha, como eu realmente sou? Só os membros VIP têm esse privilégio. 😈
             </p>
 
-            <Button
-                size="lg"
-                className="mt-8 bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold text-base md:text-lg shadow-lg transition-transform hover:scale-105 px-6"
-            >
-                Quero ser VIP😈
-            </Button>
+            <a href="https://www.ggcheckout.com/checkout/v2/Voc8n1jpAOKIzkxj9RLb" target="_blank" rel="noopener noreferrer">
+              <Button
+                  size="lg"
+                  className="mt-8 btn-gradient text-base md:text-lg shadow-lg transition-transform hover:scale-105 px-6"
+              >
+                  Quero ser VIP😈
+              </Button>
+            </a>
         </div>
       </section>
       
@@ -237,7 +217,7 @@ export default function HomeSection({ onNavigate }: HomeSectionProps) {
                     <Card className="h-full shadow-lg hover:shadow-xl transition-shadow border">
                       <CardContent className="flex h-full flex-col items-center justify-center text-center p-4">
                         <Avatar className="w-16 h-16 mb-4 border-2 border-primary/50">
-                           <AvatarImage src={`https://picsum.photos/seed/${testimonial.name}/64/64`} data-ai-hint="person face" alt={testimonial.name} />
+                           <AvatarImage src={testimonial.avatar} data-ai-hint={testimonial.hint} alt={testimonial.name} />
                           <AvatarFallback>{testimonial.name.substring(0, 2)}</AvatarFallback>
                         </Avatar>
                         <p className="text-sm text-foreground/80 italic mb-auto">"{testimonial.comment}"</p>

@@ -148,7 +148,7 @@ export default function AiStyleAdvisor() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isLoading} className="w-full bg-gradient-to-r from-accent to-primary text-primary-foreground font-bold shadow-lg">
+              <Button type="submit" disabled={isLoading} className="w-full btn-gradient shadow-lg">
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />

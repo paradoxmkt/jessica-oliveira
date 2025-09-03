@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <>
       <header className={cn(
-        "relative z-40 flex items-center justify-end p-2 bg-background/80 backdrop-blur-sm h-14"
+        "relative z-40 flex items-center justify-end p-2 bg-background h-14 border-b"
       )}>
         <Button variant="ghost" size="icon" onClick={() => setIsOpen(true)}>
           <Menu className="h-6 w-6" />

@@ -69,4 +69,8 @@
     .gradient-border-card > .inner-card {
         @apply bg-card rounded-lg h-full w-full;
     }
+
+    .btn-gradient {
+        @apply bg-gradient-to-r from-primary to-accent text-primary-foreground font-bold;
+    }
 }
